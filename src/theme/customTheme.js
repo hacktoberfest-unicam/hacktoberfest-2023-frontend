@@ -2,6 +2,24 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
 
+    palette: {
+
+        primary: {
+            light: "#fffba4", // lighter yellow
+            main: "#d2b863", // dirty yellow
+            dark: "#ad832d", // light brown
+            contrastText: "#3d2e10", // brown
+        },
+
+        secondary: {
+            light: "#efedef", // white
+            main: "#c3bcc3", // gray
+            dark: "655f67",  // grey dark
+        },
+
+
+    },
+
     typography: {
         fontFamily: "Jetbrains Mono",
         // Extrabold
