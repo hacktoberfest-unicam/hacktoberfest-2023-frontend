@@ -1,3 +1,6 @@
+# hacktoberfest-2023-frontend
+Frontend used during Hacktoberfest 2023 event in Unicam
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
