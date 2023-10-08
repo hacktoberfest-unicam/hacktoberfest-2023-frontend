@@ -2,15 +2,15 @@ import React from 'react'
 import { Container, Box, Grid } from '@mui/material'
 import RankingCard from '../components/RankingPage/RankingCard'
 import RankingTable from '../components/RankingPage/RankingTable'
-import '../index.css'
+import cornicetta from '../images/background/cornice.svg'
 
 //sistemare grafica per podio di cards 
 //restanti mostrati sottoforma di tabella con solo posizione e nome profilo
 //aggiungere animazione durante fetching dei dati
 export default function RankingPage() {
   return (
-    <Container maxWidth={'sm'}>
-        <Box paddingBottom={"5px"} left={"50%"}>
+    <Container maxWidth={1100} left={"50%"}>
+        <Box paddingBottom={"5px"} >
             <RankingCard />
         </Box>
         <Box sx={{ display: 'flex', paddingTop: '25px' }}>
@@ -23,7 +23,8 @@ export default function RankingPage() {
                 </Grid>
             </Grid>
         </Box>
-        <Box paddingTop={"50px"}>
+        <div style={{ backgroundImage: `url(${cornicetta})`, height: "30px", marginTop: "30px" }} />
+        <Box paddingTop={"50px"} maxWidth={800}>
             <RankingTable />
         </Box>
     </Container>
