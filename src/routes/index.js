@@ -1,6 +1,6 @@
 import { useRoutes } from "react-router-dom"
 import Layout from "../components/Layout"
-import { AdminPage, Homepage, LoginPage, UserPage } from "./element"
+import { AdminPage, Homepage, LoginPage, RankingPage, UserPage } from "./element"
 
 export default function Router() {
   return useRoutes([
@@ -19,6 +19,10 @@ export default function Router() {
             {
                 path: 'admin',
                 element: <AdminPage />
+            },
+            {
+                path: 'ranking',
+                element: <RankingPage />
             }
         ]
     },
