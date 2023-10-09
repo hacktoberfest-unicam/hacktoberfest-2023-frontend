@@ -4,13 +4,14 @@ import RankingCard from '../components/RankingPage/RankingCard'
 import RankingTable from '../components/RankingPage/RankingTable'
 import cornicetta from '../images/background/cornice.svg'
 
+//add timer (time left to the end of challenge)
 //sistemare grafica per podio di cards 
 //restanti mostrati sottoforma di tabella con solo posizione e nome profilo
 //aggiungere animazione durante fetching dei dati
 export default function RankingPage() {
   return (
     <Container maxWidth={1100} left={"50%"}>
-        <Box paddingBottom={"5px"} >
+        <Box paddingBottom={"5px"} display={"flex"} justifyContent={"center"}>
             <RankingCard />
         </Box>
         <Box sx={{ display: 'flex', paddingTop: '25px' }}>
