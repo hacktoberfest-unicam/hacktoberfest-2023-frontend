@@ -4,15 +4,25 @@ import { Link, Outlet } from "react-router-dom";
 
 import LogoHorizontal from "../images/logoHorizontal/hf10_horz_fcl_rgb.png";
 
-import BackgroundLaptop from "../images/background/laptop.jpg";
+// import BackgroundLaptop from "../images/background/laptop.jpg";
+import BackgroundLaptop from "../images/background/bigScreen.jpg";
 
 export default function Layout() {
-  const pages = ["Home", "Challenges", "Ranking"];
+
+  const pages = [
+    {
+      label: "Home",
+      link: "/"
+    },
+    {
+      label: "Ranking",
+      link: "ranking"
+    }
+  ]
 
   return (
-    <div
-      style={{ backgroundImage: `url(${BackgroundLaptop})`, height: "100vh" }}
-    >
+    <div>
+      <Box component="img" src={BackgroundLaptop} position="fixed" />
       <AppBar position="absolute" color="transparent" sx={{ boxShadow: 0 }}>
         <Toolbar
           disableGutters
@@ -34,14 +44,14 @@ export default function Layout() {
           <Box display="flex" flexGrow={1} gap={10}>
             <Box display="flex" gap={4}>
               {pages.map((page) => (
-                <Button key={page}>
+                <Button key={page.label} href={page.link}>
                   <Typography variant="h5" color="primary.light">
-                    {page}
+                    {page.label}
                   </Typography>
                 </Button>
               ))}
             </Box>
-            <Button variant="outlined" sx={{ marginLeft: "auto" }}>
+            <Button variant="outlined" sx={{ marginLeft: "auto" }} href="profile">
               <Typography variant="h5" color="secondary.main">
                 Profile
               </Typography>
