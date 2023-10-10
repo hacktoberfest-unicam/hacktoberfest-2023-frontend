@@ -5,7 +5,7 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 import TypewriterEffect from "react-typewriter-effect";
 
 import PcIcon from "../images/icons/05@2x.png";
-import BranchIcon from "../images/icons/08@2x.png";
+import BranchIcon from "../images/icons/03@2x.png";
 import cornicetta from "../images/background/cornice.svg";
 import { theme } from "../theme/customTheme";
 
@@ -19,7 +19,7 @@ export default function HomePage() {
   ];
 
   return (
-    <Stack paddingTop={5} minHeight={500} spacing={10}>
+    <Stack paddingTop={5} minHeight={500} spacing={11}>
       <Box display="flex" gap={2} minHeight={400}>
         <Box component="img" width="auto" height="100%" src={PcIcon} />
         <Box>
@@ -30,9 +30,9 @@ export default function HomePage() {
               color: "#ad832d",
             }}
             startDelay={100}
-            multiText={["HELLO WORLD!", "Sorry... HELLO EVERYONE!"]}
-            multiTextDelay={800}
-            typeSpeed={80}
+            multiText={["HELLO WOR", "Sorry...", "HELLO EVERYONE!"]}
+            multiTextDelay={500}
+            typeSpeed={50}
             hideCursorAfterText={true}
           />
         </Box>
@@ -60,7 +60,7 @@ export default function HomePage() {
           </Box>
           <Stack marginTop={3} spacing={3}>
             {schedule.map((item) => (
-              <Box display="flex" alignItems="center" gap={3}>
+              <Box key={item} display="flex" alignItems="center" gap={3}>
                 <div
                   style={{
                     width: 40,

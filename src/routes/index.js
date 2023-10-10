@@ -23,12 +23,12 @@ export default function Router() {
             {
                 path: 'ranking',
                 element: <RankingPage />
+            },
+            {
+                path: '/login',
+                element: <LoginPage />
             }
         ]
     },
-    {
-        path: '/login',
-        element: <LoginPage />
-    }
   ])
 }
