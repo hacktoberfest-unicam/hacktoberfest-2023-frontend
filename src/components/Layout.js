@@ -79,10 +79,16 @@ export default function Layout() {
             backgroundColor: "rgba(101, 95, 103, 0.5)",
             paddingTop: 24,
             paddingBottom: 24,
-            height: 72
+            height: 72,
           }}
         >
-          <Box maxWidth={1300} marginX="auto" display="flex" flexDirection="column" alignItems="center">
+          <Box
+            maxWidth={1300}
+            marginX="auto"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
             <Typography variant="body1" color="primary.dark">
               Hacktoberfest is a registered trademark of DigitalOcean, LLC. This
               website is not affiliated to DigitalOcean, LLC.

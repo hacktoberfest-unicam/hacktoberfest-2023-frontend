@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Box, Grid, Stack, Typography } from "@mui/material";
 
@@ -8,6 +8,7 @@ import PcIcon from "../images/icons/05@2x.png";
 import BranchIcon from "../images/icons/03@2x.png";
 import cornicetta from "../images/background/cornice.svg";
 import { theme } from "../theme/customTheme";
+import LoginComponent from "../components/LoginComponent";
 
 export default function HomePage() {
   const schedule = [
@@ -80,6 +81,15 @@ export default function HomePage() {
           <Box component="img" src={BranchIcon} />
         </Grid>
       </Grid>
+      <div
+        style={{
+          backgroundImage: `url(${cornicetta})`,
+          height: "30px",
+        }}
+      />
+      <Box display="flex" justifyContent="center" paddingY={5}>
+        <LoginComponent />
+      </Box>
     </Stack>
   );
 }
