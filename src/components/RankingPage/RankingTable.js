@@ -46,3 +46,4 @@ export default function RankingTable() {
 )}
 
 /** linear-gradient(77.9deg, rgb(236, 66, 55) 0%, rgb(51, 182, 216) 100%) */
+

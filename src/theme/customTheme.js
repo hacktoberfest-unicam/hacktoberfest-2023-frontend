@@ -13,7 +13,7 @@ export const theme = createTheme({
         secondary: {
             light: "#efedef", // white
             main: "#c3bcc3", // gray
-            dark: "655f67",  // grey dark
+            dark: "#655f67",  // grey dark
         },
 
         info: {
