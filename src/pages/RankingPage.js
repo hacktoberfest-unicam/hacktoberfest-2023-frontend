@@ -12,22 +12,23 @@ export default function RankingPage() {
   return (
     <Container maxWidth={1100} left={"50%"}>
         <Box paddingBottom={"5px"} display={"flex"} justifyContent={"center"}>
-            <RankingCard />
+            <RankingCard rank={1}/>
         </Box>
         <Box sx={{ display: 'flex', paddingTop: '25px' }}>
-            <Grid container spacing={6} sx={{ display: 'flex' }}>
-                <Grid item xs={ 6 } maxWidth="sm">
-                    <RankingCard />
+            <Grid container spacing={6} sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Grid item xs={ 5 } maxWidth="sm">
+                    <RankingCard rank={2}/>
                 </Grid>
-                <Grid item xs={ 6 }>
-                    <RankingCard />
+                <Grid item xs={ 5 }>
+                    <RankingCard rank={3}/>
                 </Grid>
             </Grid>
         </Box>
         <div style={{ backgroundImage: `url(${cornicetta})`, height: "30px", marginTop: "30px" }} />
-        <Box paddingTop={"50px"} maxWidth={800}>
+        <Box display={"flex"} justifyContent={"center"}>
             <RankingTable />
         </Box>
     </Container>
   )
 }
+
