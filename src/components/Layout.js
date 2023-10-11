@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 
 import LogoHorizontal from "../images/logoHorizontal/hf10_horz_fcl_rgb.png";
 
-import BackgroundLaptop from "../images/background/laptop.jpg";
+import BackgroundLaptop from "../images/background/bigScreen.jpg";
 
 export default function Layout() {
   const pages = ["Home", "Challenges", "Ranking"];
