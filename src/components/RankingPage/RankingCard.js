@@ -1,6 +1,9 @@
 import React from 'react'
 import { Card, CardContent, CardMedia, CardActionArea, Typography } from '@mui/material'
 import TestImage from "../../images/logoHorizontal/hf10_horz_fcl_rgb.png";
+import {users} from "../../mock/users.js" 
+
+users.sort((a, b) => a.rank - b.rank);
 
 export default function RankingCard({rank}) {
     return (
@@ -41,7 +44,26 @@ export default function RankingCard({rank}) {
                 />          
                 <CardContent>
                     <Typography>
-                        giorgiosld
+                        {(rank === 1) && (
+                            users[rank-1].nickname
+                        )}
+                        {(rank === 2) && (
+                            users[rank-1].nickname
+                        )}
+                        {(rank === 3) && (
+                            users[rank-1].nickname
+                        )}
+                    </Typography>
+                    <Typography>
+                        {(rank === 1) && (
+                            users[rank-1].points
+                        )}
+                        {(rank === 2) && (
+                            users[rank-1].points
+                        )}
+                        {(rank === 3) && (
+                            users[rank-1].points
+                        )}
                     </Typography>
                 </CardContent>    
             </CardActionArea>  

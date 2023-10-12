@@ -1,10 +1,12 @@
+import React from "react";
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Box } from '@mui/material'
 import {users} from "../../mock/users.js" 
 
-users.sort((a, b) => a.rank - b.rank);
-let remainingUsers = users.slice(3);
+let adminUsers = ["giorgiosld", "harlockOfficial", "lollobeach2000"]
 
-export default function RankingTable() {
+const normalUsers = users.filter(user => !adminUsers.includes(user.nickname));
+
+export default function AdminControlPanel(){
     return (
         <Box paddingTop={"100px"} paddingBottom={"100px"} minWidth={800}> 
             <TableContainer component={Paper} sx={{ backgroundColor: "initial", border: "2px solid rgb(210, 184, 99)", borderRadius: "25px" }} >
@@ -17,7 +19,7 @@ export default function RankingTable() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {remainingUsers.map((user, index) => (
+                        {normalUsers.map((user, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
