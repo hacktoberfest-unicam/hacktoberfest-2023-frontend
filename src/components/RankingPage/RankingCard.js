@@ -6,7 +6,6 @@ import {users} from "../../mock/users.js"
 users.sort((a, b) => a.rank - b.rank);
 
 export default function RankingCard({rank}) {
-export default function RankingCard({rank}) {
     return (
         <Card sx={{ 
             maxWidth: 555, 
@@ -29,8 +28,6 @@ export default function RankingCard({rank}) {
                 left: "0px",
                 width: "100%",
                 height: "100%",
-                mask: "linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box content-box, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px)",
-                maskComposite: "destination-out",
                 mask: "linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box content-box, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px)",
                 maskComposite: "destination-out",
                 background: "linear-gradient(77.9deg, rgb(236, 66, 55) 0%, rgb(51, 182, 216) 100%)",
