@@ -6,10 +6,14 @@ import {users} from "../../mock/users.js"
 users.sort((a, b) => a.rank - b.rank);
 
 export default function RankingCard({rank}) {
+export default function RankingCard({rank}) {
     return (
         <Card sx={{ 
             maxWidth: 555, 
             color: "#FFF",
+            ...(rank===1 && {background: "linear-gradient(156deg, #d2b863 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
+            ...(rank===2 && {background: "linear-gradient(156deg, #c1c9c2 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
+            ...(rank===3 && {background: "linear-gradient(156deg, #cd7f32 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
             ...(rank===1 && {background: "linear-gradient(156deg, #d2b863 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
             ...(rank===2 && {background: "linear-gradient(156deg, #c1c9c2 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
             ...(rank===3 && {background: "linear-gradient(156deg, #cd7f32 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
@@ -27,6 +31,8 @@ export default function RankingCard({rank}) {
                 height: "100%",
                 mask: "linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box content-box, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px)",
                 maskComposite: "destination-out",
+                mask: "linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box content-box, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px)",
+                maskComposite: "destination-out",
                 background: "linear-gradient(77.9deg, rgb(236, 66, 55) 0%, rgb(51, 182, 216) 100%)",
                 padding: "1px",
                 borderRadius: "inherit",
@@ -41,6 +47,7 @@ export default function RankingCard({rank}) {
                     image={TestImage}
                     alt="profile img github"
                     sx={{maxWidth: "50%"}}
+                />          
                 />          
                 <CardContent>
                     <Typography>
@@ -70,4 +77,6 @@ export default function RankingCard({rank}) {
         </Card>
     )
 }
+
+
 
