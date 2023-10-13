@@ -45,7 +45,6 @@ export default function RankingCard({rank}) {
                     alt="profile img github"
                     sx={{maxWidth: "50%"}}
                 />          
-                />          
                 <CardContent>
                     <Typography>
                         {(rank === 1) && (
