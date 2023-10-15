@@ -89,10 +89,10 @@ export default function Layout() {
             </Typography>
             <Stack>
               <Typography variant="body1" color="primary.dark">
-                Backend: Francesco Moschella, Vincenzo Cognome
+                Backend: Francesco Moschella, Vincenzo Petrillo
               </Typography>
               <Typography variant="body1" color="primary.dark">
-                Frontend: Lorenzo Verducci, Giorgio Saldana, Francesco Cognome
+                Frontend: Lorenzo Verducci, Giorgio Saldana, Francesco Scotti
               </Typography>
             </Stack>
           </Box>
