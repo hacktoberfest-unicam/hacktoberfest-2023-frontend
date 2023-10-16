@@ -4,9 +4,9 @@ import { users } from "../../mock/users.js"
 
 export default function AdminInfo({user}) {
 
-    let usr = users.find(usermap => user === usermap.nickname);
+  let usr = users.find(usermap => user === usermap.nickname);
   
-        return (
+  return (
     <Grid container spacing={2}>
         <Grid item xs={6} md={4}>
             <Avatar alt="profile pic" src={usr.avatar} sx={{ width: 300, height: 300 }}/>
@@ -20,7 +20,7 @@ export default function AdminInfo({user}) {
                 color: "#ad832d",
                 }}
                 startDelay={100}
-                multiText = {["Hello " + usr.nickname]}
+                multiText = {["Hello God " + usr.nickname]}
                 multiTextDelay={800}
                 typeSpeed={80}
                 hideCursorAfterText={true}
