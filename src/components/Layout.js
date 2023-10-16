@@ -15,10 +15,10 @@ import Icon from "../images/logomark_icon/hf10_icon_fcd_cmyk.png";
 
 import BackgroundLaptop from "../images/background/bigScreen.jpg";
 import { useState } from "react";
+import { theme } from "../theme/customTheme";
 
 export default function Layout() {
   const [showDynamicIsland, setShowDynamicIsland] = useState(false);
-  const [degreeGradient, setDegreeGradient] = useState(0);
 
   const showIsland = () => {
     if (window.scrollY >= 100) {
@@ -51,7 +51,7 @@ export default function Layout() {
 
   return (
     <div>
-      <Box component="img" src={BackgroundLaptop} position="fixed" />
+      {/* <Box component="img" src={BackgroundLaptop} position="fixed" /> */}
       <AppBar position="absolute" color="transparent" sx={{ boxShadow: 0 }}>
         <Toolbar
           disableGutters
@@ -92,7 +92,7 @@ export default function Layout() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Box width="100%" position="absolute" minHeight="100vh">
+      <Box width="100%" position="absolute" minHeight="100vh" sx={{ backgroundImage: `url(${BackgroundLaptop})` }}>
         <Box
           maxWidth={1300}
           marginX="auto"
@@ -129,7 +129,7 @@ export default function Layout() {
                   paddingY={1}
                 >
                   <Box component="a" href="/" height={61} padding={0.2}>
-                    <img src={Icon} />
+                    <img src={Icon} alt="hacktoberfest" />
                   </Box>
                   <Box display="flex" gap={4}>
                     <Box display="flex" gap={1}>
@@ -184,10 +184,10 @@ export default function Layout() {
             </Typography>
             <Stack>
               <Typography variant="body1" color="primary.dark">
-                Backend: Francesco Moschella, Vincenzo Petrillo
+                Backend: <a href="https://github.com/HarlockOfficial" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Francesco Moschella</a>, <a href="https://github.com/ArghgrA" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Vincenzo Petrillo</a>
               </Typography>
               <Typography variant="body1" color="primary.dark">
-                Frontend: Lorenzo Verducci, Giorgio Saldana, Francesco Scotti
+                Frontend: <a href="https://github.com/lollobeach" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Lorenzo Verducci</a>, <a href="https://github.com/giorgiosld" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Giorgio Saldana</a>, <a href="https://github.com/Frascott05" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Francesco Scotti</a>
               </Typography>
             </Stack>
           </Box>
