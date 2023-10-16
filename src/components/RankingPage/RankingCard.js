@@ -1,12 +1,18 @@
 import React from 'react'
 import { Card, CardContent, CardMedia, CardActionArea, Typography } from '@mui/material'
 import TestImage from "../../images/logoHorizontal/hf10_horz_fcl_rgb.png";
+import {users} from "../../mock/users.js" 
+
+users.sort((a, b) => a.rank - b.rank);
 
 export default function RankingCard({rank}) {
     return (
         <Card sx={{ 
             maxWidth: 555, 
             color: "#FFF",
+            ...(rank===1 && {background: "linear-gradient(156deg, #d2b863 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
+            ...(rank===2 && {background: "linear-gradient(156deg, #c1c9c2 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
+            ...(rank===3 && {background: "linear-gradient(156deg, #cd7f32 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
             ...(rank===1 && {background: "linear-gradient(156deg, #d2b863 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
             ...(rank===2 && {background: "linear-gradient(156deg, #c1c9c2 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
             ...(rank===3 && {background: "linear-gradient(156deg, #cd7f32 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
@@ -41,11 +47,32 @@ export default function RankingCard({rank}) {
                 />          
                 <CardContent>
                     <Typography>
-                        giorgiosld
+                        {(rank === 1) && (
+                            users[rank-1].nickname
+                        )}
+                        {(rank === 2) && (
+                            users[rank-1].nickname
+                        )}
+                        {(rank === 3) && (
+                            users[rank-1].nickname
+                        )}
+                    </Typography>
+                    <Typography>
+                        {(rank === 1) && (
+                            users[rank-1].points
+                        )}
+                        {(rank === 2) && (
+                            users[rank-1].points
+                        )}
+                        {(rank === 3) && (
+                            users[rank-1].points
+                        )}
                     </Typography>
                 </CardContent>    
             </CardActionArea>  
         </Card>
     )
 }
+
+
 

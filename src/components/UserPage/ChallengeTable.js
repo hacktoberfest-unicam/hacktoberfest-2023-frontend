@@ -21,9 +21,9 @@ export default function RankingTable() {
         <Table sx={{ minWidth: 500 }} aria-label="Ranking Table">
             <TableHead>
                 <TableRow>
-                    <TableCell sx= {{color: "#FFF" }}>Challenges</TableCell>
-                    <TableCell sx= {{color: "#FFF" }}>Points</TableCell>
-                    <TableCell sx= {{color: "#FFF" }}>solves</TableCell>
+                    <TableCell sx= {{color: "#FFF", textAlign: "center" }}>Challenges</TableCell>
+                    <TableCell sx= {{color: "#FFF",textAlign: "center" }}>Points</TableCell>
+                    <TableCell sx= {{color: "#FFF",textAlign: "center" }}>solves</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -32,9 +32,9 @@ export default function RankingTable() {
                         key={row.points}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                        <TableCell component="th" scope="row" sx= {{color: "#FFF" }}>{row.challenge}</TableCell>
-                        <TableCell sx= {{color: "#FFF" }}>{row.points}</TableCell>
-                        <TableCell sx= {{color: "#FFF" }}>{row.solves}</TableCell>
+                        <TableCell component="th" scope="row" sx= {{color: "#FFF", textAlign: "center" }}>{row.challenge}</TableCell>
+                        <TableCell sx= {{color: "#FFF", textAlign: "center" }}>{row.points}</TableCell>
+                        <TableCell sx= {{color: "#FFF", textAlign: "center" }}>{row.solves}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
