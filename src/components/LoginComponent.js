@@ -8,16 +8,16 @@ import TypewriterEffect from "react-typewriter-effect";
 export default function LoginComponent() {
   return (
     <Stack justifyContent="center">
-      <Box height={92}>
+      <Box minHeight={92} >
         <TypewriterEffect
           textStyle={{
             fontWeight: 500,
             fontSize: 70,
             color: "#ad832d",
+            textAlign: "center"
           }}
           startDelay={100}
           text="Let's Hack!"
-          multiTextDelay={500}
           typeSpeed={50}
           hideCursorAfterText={true}
         />
