@@ -26,7 +26,7 @@ var profilo = 0;
 
 export default function UserPage() {
 
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   // Funzione per impostare isAdmin su true se l'utente è un amministratore
   /*const handlePower = () => { 
