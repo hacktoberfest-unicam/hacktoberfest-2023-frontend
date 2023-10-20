@@ -15,7 +15,7 @@ const rows = [
     createTable("challenge3", 250, 15),
 ];
 
-export default function RankingTable() {
+export default function ChallengeTable() {
     return (
     <TableContainer component={Paper} sx={{ backgroundColor: "initial", border: "2px solid rgb(210, 184, 99)", borderRadius: "25px" }} >
         <Table sx={{ minWidth: 500 }} aria-label="Ranking Table">

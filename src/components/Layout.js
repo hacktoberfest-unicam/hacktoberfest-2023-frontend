@@ -60,7 +60,7 @@ export default function Layout() {
             maxWidth: 1300,
             marginX: "auto",
             marginY: 0,
-            gap: 30,
+            gap: 20,
           }}
         >
           <Link to="/">
@@ -83,7 +83,8 @@ export default function Layout() {
             <Button
               variant="outlined"
               sx={{ marginLeft: "auto" }}
-              href="profile"
+              // href="profile"
+              href={`https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URL}`}
             >
               <Typography variant="h5" color="secondary.main">
                 Profile
