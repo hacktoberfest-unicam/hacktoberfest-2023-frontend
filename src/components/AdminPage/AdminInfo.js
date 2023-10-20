@@ -5,6 +5,7 @@ import { users } from "../../mock/users.js"
 export default function AdminInfo({user}) {
 
   let usr = users.find(usermap => user === usermap.nickname);
+  console.log(usr)
   
   return (
     <Grid container spacing={2}>
