@@ -144,53 +144,6 @@ export default function RankingCard({rank}) {
                         </CardContent>
                     </CardActionArea>
                 }
-                {/*<CardActionArea sx={{display: 'flex'}}>
-                    {(rank === 1) && <CardMedia 
-                        component="img"
-                        height="140"
-                        image={avatar1}
-                        alt="profile img github"
-                        sx={{maxWidth: "50%"}}
-                    />  }     
-                    {(rank === 2) && <CardMedia 
-                        component="img"
-                        height="140"
-                        image={avatar2}
-                        alt="profile img github"
-                        sx={{maxWidth: "50%"}}
-                    />  }     
-                    {(rank === 3) && <CardMedia 
-                        component="img"
-                        height="140"
-                        image={avatar3}
-                        alt="profile img github"
-                        sx={{maxWidth: "50%"}}
-                    />  }             
-                    <CardContent>
-                        <Typography>
-                            {(rank === 1) && (
-                                githubUsername1
-                            )}
-                            {(rank === 2) && (
-                                githubUsername2
-                            )}
-                            {(rank === 3) && (
-                                githubUsername3
-                            )}
-                        </Typography>
-                        <Typography>
-                            {(rank === 1) && (
-                                points1
-                            )}
-                            {(rank === 2) && (
-                                points2
-                            )}
-                            {(rank === 3) && (
-                                points3
-                            )}
-                        </Typography>
-                    </CardContent>    
-                </CardActionArea>  */}
             </Card>
         ) : (
             <p>Lulz</p>
