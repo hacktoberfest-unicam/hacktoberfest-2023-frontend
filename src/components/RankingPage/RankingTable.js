@@ -17,7 +17,7 @@ export default function RankingTable() {
     const [LeaderboardData, setLeaderboardData] = useState([])
 
     useEffect(() => {
-        const apiLeaderboard = 'http://127.0.0.1:8000/api/leaderboard/';
+        const apiLeaderboard = `${process.env.REACT_APP_BACKEND_URL}api/leaderboard/`;
         /*const headers = {
             'Access-Control-Allow-Origin': '*',
         }*/
