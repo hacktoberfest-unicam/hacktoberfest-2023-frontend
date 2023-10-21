@@ -4,13 +4,14 @@ import UserInfo from "../components/UserPage/UserInfo";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
-import { Typography } from "@mui/material";
+
+import TypewriterEffect from "react-typewriter-effect";
+
 
 export default function UserPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
-  const [users, setUsers] = useState([]);
 
   const [loaded, setLoaded] = useState();
 
@@ -28,7 +29,7 @@ export default function UserPage() {
             headers: { Authorization: `${authorization}` },
           })
           .then((response) => {
-            setIsAdmin(response.data.is_admin);
+            setIsAdmin(response.data.is_staff);
             setIsAuthenticated(true);
             setUser(response.data);
           })
@@ -44,7 +45,7 @@ export default function UserPage() {
           headers: { Authorization: `${token}` },
         })
         .then((response) => {
-          setIsAdmin(response.data.is_admin);
+          setIsAdmin(response.data.is_staff);
           setIsAuthenticated(true);
           setUser(response.data);
           console.log(response.data);
@@ -55,23 +56,26 @@ export default function UserPage() {
         });
     }
     setLoaded(true);
-    // const apiUsers = `${process.env.REACT_APP_BACKEND_URL}api/user/all`
-    // axios.get(apiUsers).then((response) => {
-    //     setUsers(response.data)
-
-    // }).catch((error) => {
-    //         console.error(error)
-    // });
   }, []);
 
   return (
     <div>
       {!loaded && (
-        <Typography variant="h1" color="red">
-          Ciao
-        </Typography>
+        <TypewriterEffect
+          textStyle={{
+            fontSize: 16,
+            fontWeight: 400,
+            color: "rgb(239, 237, 239)",
+          }}
+          startDelay={0}
+          text={"Loading /usr/lib/profile..."}
+          typeSpeed={60}
+          hideCursorAfterText={false}
+        />
       )}
-      {loaded && isAuthenticated && isAdmin && user && <AdminPage user={user} />}
+      {loaded && isAuthenticated && isAdmin && user && (
+        <AdminPage user={user} />
+      )}
       {loaded && isAuthenticated && user && <UserInfo user={user} />}
       {loaded && !isAuthenticated && <Navigate to="/" />}
     </div>

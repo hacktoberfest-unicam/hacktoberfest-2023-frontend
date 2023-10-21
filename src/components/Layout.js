@@ -38,7 +38,7 @@ export default function Layout() {
     },
     {
       label: "Ranking",
-      link: "ranking",
+      link: "/ranking",
     },
   ];
 

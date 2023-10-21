@@ -1,11 +1,4 @@
-import {
-  Box,
-  Typography,
-  Container,
-  Grid,
-  Avatar,
-  useScrollTrigger,
-} from "@mui/material";
+import { Box, Typography, Container, Grid, Avatar } from "@mui/material";
 import TypewriterEffect from "react-typewriter-effect";
 import ChallengeTable from "./ChallengeTable";
 import cornicetta from "../../images/background/cornice.svg";
@@ -19,14 +12,10 @@ function userInfo(FirstName, LastName, NickName, Image, Points, Position) {
   return { FirstName, LastName, NickName, Image, Points, Position };
 }
 
-const temProfiles = [userInfo("Gojo", "Satoru", "Six Eyes", profil2, 4508, 1)];
-var profilo = 0;
-
 export default function UserInfo({ user }) {
-  
   const [ranking, setRanking] = useState();
   const [points, setPoints] = useState();
-  const [problemsSolved, setProblemsSolved] = useState()
+  const [problemsSolved, setProblemsSolved] = useState();
 
   const [isLoaded, setIsLoaded] = useState();
 
@@ -37,7 +26,7 @@ export default function UserInfo({ user }) {
       .then((response) => {
         const leaderboard = response.data.leaderboard;
         const userFound = leaderboard?.find(
-          (item) => item['user']['github_username'] === user.github_username
+          (item) => item["user"]["github_username"] === user.github_username
         );
         setPoints(userFound?.score);
         setRanking(userFound?.position);
@@ -51,7 +40,8 @@ export default function UserInfo({ user }) {
         },
       })
       .then((response) => {
-        setProblemsSolved(response.data.submission_list.map(x => x.problem))
+        setProblemsSolved(response.data.submission_list);
+        console.log(response.data.submission_list);
       })
       .catch((err) => {
         console.error(err);
@@ -61,115 +51,141 @@ export default function UserInfo({ user }) {
 
   return (
     <>
-      {!isLoaded && <Typography variant="h1" color="red"></Typography>}
-      <div>
-        <Container fixed sx={{ overflowY: "auto", marginBottom: 20 }}>
-          <Grid container spacing={2} sx={{ marginTop: "50px" }}>
-            <Grid
-              item
-              xs={6}
-              md={4}
-              container
-              justify="center"
-              alignItems="center"
-              textAlign="center"
-            >
-              <SVG />
-              <Avatar
-                alt="profile pic"
-                variant="rounded"
-                src={user?.github_profile_picture}
-                sx={{
-                  position: "absolute",
-                  width: 200,
-                  height: 200,
-                  rotate: "15deg",
-                  textAlign: "center",
-                  display: "inline-block",
-                }}
-              />
-            </Grid>
-            <Grid item xs={6} md={8}>
-              <Box height={32}>
-                <TypewriterEffect
-                  textStyle={{
-                    fontWeight: 800,
-                    fontSize: 24,
-                    color: "red",
-                  }}
-                  startDelay={0}
-                  multiText={[">> boot profile..."]}
-                  multiTextDelay={800}
-                  typeSpeed={60}
-                  hideCursorAfterText={true}
-                ></TypewriterEffect>
-              </Box>
-              <Box alignContent={"center"} height={240}>
-                <TypewriterEffect
-                  textStyle={{
-                    fontWeight: 800,
-                    fontSize: 90,
-                    color: "#ad832d",
-                  }}
-                  startDelay={1500}
-                  multiText={[`Hello ` + user?.github_username]}
-                  multiTextDelay={1000}
-                  typeSpeed={100}
-                  hideCursorAfterText={true}
-                />
-              </Box>
-
-              <Box
-                sx={{
-                  marginTop: "30px",
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column", // Center the content vertically
-                  gap: 2,
-                  backgroundColor: "white",
-                  opacity: 0.8,
-                  padding: 2,
-                  borderRadius: 8, // Rounded corners
-                  textAlign: "center", // Center text horizontally
-                }}
-              >
-                <Typography variant="h4">{`${user?.github_username}`}</Typography>
-                <Grid container spacing={2}>
-                  <Grid item xs={6}>
-                    <Typography variant="h6">
-                      Points Earned:{" "}
-                      <span style={{ color: theme.palette.primary.dark }}>
-                        {points}
-                      </span>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography variant="h6">
-                      Ranking:{" "}
-                      <span style={{ color: theme.palette.primary.dark }}>
-                        {ranking}
-                      </span>
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-
-        <div
-          style={{
-            backgroundImage: `url(${cornicetta})`,
-            height: "30px",
-            marginTop: "30px",
-            marginBottom: "30px",
+      {!isLoaded && (
+        <TypewriterEffect
+          textStyle={{
+            fontSize: 16,
+            fontWeight: 400,
+            color: "rgb(239, 237, 239)",
           }}
+          startDelay={0}
+          multiText={["Loading /usr/lib/profile..."]}
+          typeSpeed={60}
+          hideCursorAfterText={false}
         />
+      )}
+      {isLoaded && (
+        <div>
+          <Container fixed sx={{ overflowY: "auto", marginBottom: 20 }}>
+            <Grid container spacing={2} sx={{ marginTop: "50px" }}>
+              <Grid
+                item
+                xs={6}
+                md={4}
+                container
+                justify="center"
+                alignItems="center"
+                textAlign="center"
+              >
+                <SVG />
+                <Avatar
+                  alt="profile pic"
+                  variant="rounded"
+                  src={user?.github_profile_picture}
+                  sx={{
+                    position: "absolute",
+                    width: 200,
+                    height: 200,
+                    rotate: "15deg",
+                    textAlign: "center",
+                    display: "inline-block",
+                  }}
+                />
+              </Grid>
+              <Grid item xs={6} md={8}>
+                <Box height={32}>
+                  <TypewriterEffect
+                    textStyle={{
+                      fontWeight: 800,
+                      fontSize: 24,
+                      color: "red",
+                    }}
+                    startDelay={0}
+                    multiText={[">> boot profile..."]}
+                    multiTextDelay={800}
+                    typeSpeed={60}
+                    hideCursorAfterText={true}
+                  ></TypewriterEffect>
+                </Box>
+                <Box alignContent={"center"} height={180} paddingTop={4}>
+                  <TypewriterEffect
+                    textStyle={{
+                      fontWeight: 500,
+                      fontSize: 45,
+                      color: "#efedef",
+                    }}
+                    startDelay={1500}
+                    text={"hello"}
+                    // multiTextDelay={1000}
+                    typeSpeed={100}
+                    hideCursorAfterText={true}
+                  />
+                  <TypewriterEffect
+                    textStyle={{
+                      fontWeight: 800,
+                      fontSize: 90,
+                      color: "#d2b863",
+                    }}
+                    startDelay={2000}
+                    text={user?.github_username}
+                    // multiTextDelay={1000}
+                    typeSpeed={100}
+                    hideCursorAfterText={true}
+                  />
+                </Box>
 
-        <Container>
-          {problemsSolved && <ChallengeTable problems={problemsSolved} />}
-        </Container>
-      </div>
+                <Box
+                  sx={{
+                    marginTop: "30px",
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column", // Center the content vertically
+                    gap: 2,
+                    backgroundColor: "white",
+                    opacity: 0.8,
+                    padding: 2,
+                    borderRadius: 8, // Rounded corners
+                    textAlign: "center", // Center text horizontally
+                  }}
+                >
+                  {/* <Typography variant="h4">{`${user?.github_username}`}</Typography> */}
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Typography variant="h6">
+                        Points Earned:{" "}
+                        <span style={{ color: theme.palette.primary.dark }}>
+                          {points}
+                        </span>
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography variant="h6">
+                        Ranking:{" "}
+                        <span style={{ color: theme.palette.primary.dark }}>
+                          {ranking}
+                        </span>
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+
+          <div
+            style={{
+              backgroundImage: `url(${cornicetta})`,
+              height: "30px",
+              marginTop: "30px",
+              marginBottom: "30px",
+            }}
+          />
+
+          <Container>
+            {problemsSolved && <ChallengeTable problems={problemsSolved} />}
+          </Container>
+        </div>
+      )}
     </>
   );
 }

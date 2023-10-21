@@ -21,9 +21,6 @@ const rows = [
 ];
 
 export default function ChallengeTable({ problems }) {
-  useEffect(() => {
-    console.log(problems);
-  }, []);
 
   return (
     <TableContainer
@@ -44,14 +41,14 @@ export default function ChallengeTable({ problems }) {
               Points
             </TableCell>
             <TableCell sx={{ color: "#FFF", textAlign: "center" }}>
-              solves
+              Bonus
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {problems.map((problem) => (
             <TableRow
-              key={problem.id}
+              key={problem.problem.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell
@@ -59,13 +56,13 @@ export default function ChallengeTable({ problems }) {
                 scope="row"
                 sx={{ color: "#FFF", textAlign: "center" }}
               >
-                {problem.name}
+                {problem.problem.name}
               </TableCell>
               <TableCell sx={{ color: "#FFF", textAlign: "center" }}>
-                {problem.points}
+                {problem.problem.points}
               </TableCell>
               <TableCell sx={{ color: "#FFF", textAlign: "center" }}>
-                5
+                {problem.bonus_points}
               </TableCell>
             </TableRow>
           ))}
