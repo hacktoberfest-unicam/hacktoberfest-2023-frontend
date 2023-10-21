@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import React, { useEffect, useState } from 'react'
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Box } from '@mui/material'
+import {users} from "../../mock/users.js" 
 import axios from 'axios';
 
+users.sort((a, b) => a.rank - b.rank);
+//let remainingUsers = users.slice(3);
+
 const adminUsers = ["giorgiosld", "HarlockOfficial", "lollobeach2000"]
+//let normalUsers = remainingUsers.filter(user => !adminUsers.includes(user.nickname));
+
 
 export default function RankingTable() {
 
