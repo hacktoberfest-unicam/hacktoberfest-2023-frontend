@@ -3,6 +3,7 @@ import { Card, CardContent, CardMedia, CardActionArea, Typography } from '@mui/m
 import {users} from "../../mock/users.js" 
 import axios from 'axios';
 
+
 users.sort((a, b) => a.rank - b.rank);
 
 export default function RankingCard({rank}) {
