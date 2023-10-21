@@ -7,7 +7,7 @@ import {
   Typography,
   Zoom,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 import LogoHorizontal from "../images/logoHorizontal/hf10_horz_fcl_rgb.png";
@@ -16,9 +16,22 @@ import Icon from "../images/logomark_icon/hf10_icon_fcd_cmyk.png";
 import BackgroundLaptop from "../images/background/bigScreen.jpg";
 import { useState } from "react";
 import { theme } from "../theme/customTheme";
+import axios from "axios";
 
 export default function Layout() {
   const [showDynamicIsland, setShowDynamicIsland] = useState(false);
+  const [githubState, setGitHubState] = useState()
+
+  useEffect(() => {
+    const apiLeaderboard = `${process.env.REACT_APP_BACKEND_URL}api/login/state`;
+    axios.get(apiLeaderboard)
+    .then((response) => {
+      setGitHubState(response.data.state)
+    })
+    .catch((error) => {
+      console.error("Zio pera")
+    });
+  }, []);
 
   const showIsland = () => {
     if (window.scrollY >= 100) {
@@ -45,7 +58,9 @@ export default function Layout() {
 
   for (let i = 0; i <= 100; i += 1) {
     animation[`${i}%`] = {
-      background: `linear-gradient(${i * 3.6}deg, rgba(210,184,99,1) 17%, rgba(255,251,164,1) 44%, rgba(195,188,195,1) 67%);`,
+      background: `linear-gradient(${
+        i * 3.6
+      }deg, rgba(210,184,99,1) 17%, rgba(255,251,164,1) 44%, rgba(195,188,195,1) 67%);`,
     };
   }
 
@@ -60,7 +75,7 @@ export default function Layout() {
             maxWidth: 1300,
             marginX: "auto",
             marginY: 0,
-            gap: 30,
+            gap: 20,
           }}
         >
           <Link to="/">
@@ -80,19 +95,27 @@ export default function Layout() {
                 </Button>
               ))}
             </Box>
-            <Button
-              variant="outlined"
-              sx={{ marginLeft: "auto" }}
-              href="profile"
-            >
-              <Typography variant="h5" color="secondary.main">
-                Profile
-              </Typography>
-            </Button>
+            {githubState && (
+                <Button
+                  variant="outlined"
+                  sx={{ marginLeft: "auto" }}
+                  // href="profile"
+                  href={`https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BACKEND_URL}api/login&state=${githubState}`}
+                >
+                  <Typography variant="h5" color="secondary.main">
+                    Profile
+                  </Typography>
+                </Button>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
-      <Box width="100%" position="absolute" minHeight="100vh" sx={{ backgroundImage: `url(${BackgroundLaptop})` }}>
+      <Box
+        width="100%"
+        position="absolute"
+        minHeight="100vh"
+        sx={{ backgroundImage: `url(${BackgroundLaptop})` }}
+      >
         <Box
           maxWidth={1300}
           marginX="auto"
@@ -184,10 +207,68 @@ export default function Layout() {
             </Typography>
             <Stack>
               <Typography variant="body1" color="primary.dark">
-                Backend: <a href="https://github.com/HarlockOfficial" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Francesco Moschella</a>, <a href="https://github.com/ArghgrA" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Vincenzo Petrillo</a>
+                Backend:{" "}
+                <a
+                  href="https://github.com/HarlockOfficial"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    textDecoration: "none",
+                    color: theme.palette.primary.dark,
+                  }}
+                >
+                  Francesco Moschella
+                </a>
+                ,{" "}
+                <a
+                  href="https://github.com/ArghgrA"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    textDecoration: "none",
+                    color: theme.palette.primary.dark,
+                  }}
+                >
+                  Vincenzo Petrillo
+                </a>
               </Typography>
               <Typography variant="body1" color="primary.dark">
-                Frontend: <a href="https://github.com/lollobeach" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Lorenzo Verducci</a>, <a href="https://github.com/giorgiosld" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Giorgio Saldana</a>, <a href="https://github.com/Frascott05" target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: theme.palette.primary.dark }}>Francesco Scotti</a>
+                Frontend:{" "}
+                <a
+                  href="https://github.com/lollobeach"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    textDecoration: "none",
+                    color: theme.palette.primary.dark,
+                  }}
+                >
+                  Lorenzo Verducci
+                </a>
+                ,{" "}
+                <a
+                  href="https://github.com/giorgiosld"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    textDecoration: "none",
+                    color: theme.palette.primary.dark,
+                  }}
+                >
+                  Giorgio Saldana
+                </a>
+                ,{" "}
+                <a
+                  href="https://github.com/Frascott05"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    textDecoration: "none",
+                    color: theme.palette.primary.dark,
+                  }}
+                >
+                  Francesco Scotti
+                </a>
               </Typography>
             </Stack>
           </Box>

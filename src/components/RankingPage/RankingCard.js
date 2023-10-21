@@ -11,7 +11,7 @@ export default function RankingCard({rank}) {
     const [LeaderboardData, setLeaderboardData] = useState([])
 
     useEffect(() => {
-        const apiLeaderboard = 'http://127.0.0.1:8000/api/leaderboard/';
+        const apiLeaderboard = `${process.env.REACT_APP_BACKEND_URL}api/leaderboard/`;
         /*const headers = {
             'Access-Control-Allow-Origin': '*',
         }*/
@@ -47,7 +47,11 @@ export default function RankingCard({rank}) {
     return (
         <Card sx={{ 
             maxWidth: "400px" , 
+            maxWidth: "400px" , 
             color: "#FFF",
+            ...(rank===1 && {background: "linear-gradient(156deg, rgba(239, 237, 239, 0.04) 0%, rgba(0, 0, 0, 69) 92.3%)"}),
+            ...(rank===2 && {background: "linear-gradient(156deg, rgba(239, 237, 239, 0.04) 0%, rgba(0, 0, 0, 69) 92.3%)"}),
+            ...(rank===3 && {background: "linear-gradient(156deg, rgba(239, 237, 239, 0.04) 0%, rgba(0, 0, 0, 69) 92.3%)"}),
             ...(rank===1 && {background: "linear-gradient(156deg, rgba(239, 237, 239, 0.04) 0%, rgba(0, 0, 0, 69) 92.3%)"}),
             ...(rank===2 && {background: "linear-gradient(156deg, rgba(239, 237, 239, 0.04) 0%, rgba(0, 0, 0, 69) 92.3%)"}),
             ...(rank===3 && {background: "linear-gradient(156deg, rgba(239, 237, 239, 0.04) 0%, rgba(0, 0, 0, 69) 92.3%)"}),
@@ -56,6 +60,7 @@ export default function RankingCard({rank}) {
             borderRadius: "16px",
             padding: "24px 48px",
             textAlign: "center",
+            overflow: "inherit",
             overflow: "inherit",
             '&::after': {
                 content: "''",
@@ -66,6 +71,10 @@ export default function RankingCard({rank}) {
                 height: "100%",
                 mask: "linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box content-box, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px)",
                 maskComposite: "destination-out",
+                ...(rank===1 && {background: "linear-gradient(156deg, #d2b863 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
+                ...(rank===2 && {background: "linear-gradient(156deg, #c1c9c2 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
+                ...(rank===3 && {background: "linear-gradient(156deg, #cd7f32 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
+                padding: "3px",
                 ...(rank===1 && {background: "linear-gradient(156deg, #d2b863 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
                 ...(rank===2 && {background: "linear-gradient(156deg, #c1c9c2 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
                 ...(rank===3 && {background: "linear-gradient(156deg, #cd7f32 0%, rgba(0, 0, 0, 0.04) 92.3%)"}),
@@ -95,38 +104,27 @@ export default function RankingCard({rank}) {
                     image={avatar3}
                     alt="profile img github"
                     sx={{maxWidth: "50%"}}
-                />  }        
+                />  }             
                 <CardContent>
                     <Typography>
                         {(rank === 1) && (
-                            //users[rank-1].nickname
                             githubUsername1
                         )}
                         {(rank === 2) && (
-                            //users[rank-1].nickname
-                            //LeaderboardData[1].github_username
                             githubUsername2
                         )}
                         {(rank === 3) && (
-                            //users[rank-1].nickname
-                            //LeaderboardData[2].github_username
                             githubUsername3
                         )}
                     </Typography>
                     <Typography>
                         {(rank === 1) && (
-                            //users[rank-1].points
-                            //LeaderboardData[0].points
                             points1
                         )}
                         {(rank === 2) && (
-                            //users[rank-1].points
-                            //LeaderboardData[1].points
                             points2
                         )}
                         {(rank === 3) && (
-                            //users[rank-1].points
-                            //LeaderboardData[2].points
                             points3
                         )}
                     </Typography>
