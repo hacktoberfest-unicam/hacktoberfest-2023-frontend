@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom"
 import Layout from "../components/Layout"
 import { AdminPage, Homepage, LoginPage, RankingPage, UserPage } from "./element"
+import ProfilePage from "../pages/ProfilePage"
 
 export default function Router() {
   return useRoutes([
@@ -25,8 +26,12 @@ export default function Router() {
                 element: <RankingPage />
             },
             {
-                path: '/login',
+                path: 'login',
                 element: <LoginPage />
+            },
+            {
+                path: 'user/:nickname',
+                element: <ProfilePage />
             }
         ]
     },
