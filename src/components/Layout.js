@@ -50,7 +50,7 @@ export default function Layout() {
     },
     {
       label: "Ranking",
-      link: "/git pull git@github.com:hacktoberfest-unicam/hacktoberfest-2023-frontend.git mainranking",
+      link: "/ranking",
     },
   ];
 
