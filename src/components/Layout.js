@@ -20,18 +20,6 @@ import axios from "axios";
 
 export default function Layout() {
   const [showDynamicIsland, setShowDynamicIsland] = useState(false);
-  const [githubState, setGitHubState] = useState()
-
-  useEffect(() => {
-    const apiLeaderboard = `${process.env.REACT_APP_BACKEND_URL}api/login/state`;
-    axios.get(apiLeaderboard)
-    .then((response) => {
-      setGitHubState(response.data.state)
-    })
-    .catch((error) => {
-      console.error("Zio pera")
-    });
-  }, []);
 
   const showIsland = () => {
     if (window.scrollY >= 100) {
@@ -95,18 +83,18 @@ export default function Layout() {
                 </Button>
               ))}
             </Box>
-            {githubState && (
-                <Button
-                  variant="outlined"
-                  sx={{ marginLeft: "auto" }}
-                  // href="profile"
-                  href={`https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BACKEND_URL}api/login&state=${githubState}`}
-                >
-                  <Typography variant="h5" color="secondary.main">
-                    Profile
-                  </Typography>
-                </Button>
-            )}
+            {/* {githubState && ( */}
+            <Button
+              variant="outlined"
+              sx={{ marginLeft: "auto" }}
+              href={localStorage.getItem("token") ? "profile" : "login"}
+              // href={`https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BACKEND_URL}api/login&state=${githubState}`}
+            >
+              <Typography variant="h5" color="secondary.main">
+                Profile
+              </Typography>
+            </Button>
+            {/* )} */}
           </Box>
         </Toolbar>
       </AppBar>
