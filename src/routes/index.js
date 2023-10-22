@@ -18,10 +18,6 @@ export default function Router() {
                 element: <UserPage />
             },
             {
-                path: 'admin',
-                element: <AdminPage />
-            },
-            {
                 path: 'ranking',
                 element: <RankingPage />
             },
@@ -35,5 +31,5 @@ export default function Router() {
             }
         ]
     },
-  ])
+  ]);
 }
