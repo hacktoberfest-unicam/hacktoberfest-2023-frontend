@@ -86,7 +86,7 @@ export default function Layout() {
             <Button
               variant="outlined"
               sx={{ marginLeft: "auto" }}
-              href={localStorage.getItem("token") ? "profile" : "login"}
+              href={localStorage.getItem("token") ? "/profile" : "/login"}
               // href={`https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BACKEND_URL}api/login&state=${githubState}`}
             >
               <Typography variant="h5" color="secondary.main">
@@ -157,12 +157,14 @@ export default function Layout() {
                     </Box>
                     <Button
                       sx={{ marginLeft: "auto", borderRadius: 10, padding: 2 }}
-                      href="profile"
+                      href={localStorage.getItem("token") ? "/profile" : "/login"}
+                      // href={`https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BACKEND_URL}api/login&state=${githubState}`}
                     >
                       <Typography variant="h5" color="secondary.main">
                         Profile
                       </Typography>
                     </Button>
+  
                   </Box>
                 </Box>
               </Box>
