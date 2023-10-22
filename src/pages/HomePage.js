@@ -20,12 +20,15 @@ export default function HomePage() {
 
   const schedule = [
     "9:00 - 10:00 -> Welcome & Greetings",
-    "10:00 - 12:00 -> Introduction",
-    "12:00 - 14:00 -> Lunchtime",
-    "14:00 - 18:30 -> Start Hackathon",
-    "18:30 - 19:00 -> Closing Hackathon",
-    "19:00 - 19:30 -> Award ceremony",
-    "19:30 - ... -> Enjoy",
+    "10:00 - 11:00 -> Speech",
+    "11:00 -> Start Hackathon",
+    "13:00 - 15:00 -> Lunchtime",
+    "15:20 - 15:40 -> Speech",
+    "16:00 - 18:00 -> Gaming Room if you want",
+    "18:00 -> Closing Hackathon",
+    "18:00 - 18:20 -> Speech",
+    "18:20 - 18:45 -> Award ceremony",
+    "18:45 - ... -> Enjoy",
   ];
 
   return (
