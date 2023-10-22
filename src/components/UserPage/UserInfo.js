@@ -2,6 +2,7 @@ import { Box, Typography, Container, Grid, Avatar } from "@mui/material";
 import TypewriterEffect from "react-typewriter-effect";
 import ChallengeTable from "./ChallengeTable";
 import cornicetta from "../../images/background/cornice.svg";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { theme } from "../../theme/customTheme";
@@ -55,7 +56,6 @@ export default function UserInfo({ user }) {
   if(problemsSolved){
     userProblemSolved = problemsSolved?.filter((item) => item.user.id === user.id)
   }
-
 
   return (
     <>
