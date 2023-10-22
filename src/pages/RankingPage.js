@@ -28,7 +28,7 @@ export default function RankingPage() {
                         color: "rgb(239, 237, 239)"
                     }}
                     startDelay={0}
-                    multiText={["Loading /usr/lib/ranking..."]}
+                    multiText={[">> Loading /usr/lib/ranking..."]}
                     typeSpeed={60}
                     hideCursorAfterText={false}
                 />
