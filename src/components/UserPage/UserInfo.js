@@ -2,19 +2,16 @@ import { Box, Typography, Container, Grid, Avatar } from "@mui/material";
 import TypewriterEffect from "react-typewriter-effect";
 import ChallengeTable from "./ChallengeTable";
 import cornicetta from "../../images/background/cornice.svg";
-import profil2 from "../../images/profile_pic/satoru-gojo.jpg";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { theme } from "../../theme/customTheme";
 import SVG from "./SVG";
 
-function userInfo(FirstName, LastName, NickName, Image, Points, Position) {
-  return { FirstName, LastName, NickName, Image, Points, Position };
-}
-
 export default function UserInfo({ user }) {
-  const [ranking, setRanking] = useState();
-  const [points, setPoints] = useState();
+  const [leaderboard, setLeaderboard] = useState();
+  //const [ranking, setRanking] = useState();
+  //const [points, setPoints] = useState();
   const [problemsSolved, setProblemsSolved] = useState();
 
   const [isLoaded, setIsLoaded] = useState();
@@ -24,12 +21,12 @@ export default function UserInfo({ user }) {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}api/leaderboard/`)
       .then((response) => {
-        const leaderboard = response.data.leaderboard;
-        const userFound = leaderboard?.find(
+        setLeaderboard(response.data.leaderboard);
+        /*const userFound = leaderboard?.find(
           (item) => item["user"]["github_username"] === user.github_username
         );
         setPoints(userFound?.score);
-        setRanking(userFound?.position);
+        setRanking(userFound?.position);*/
       })
       .catch((err) => console.error(err));
 
@@ -41,13 +38,24 @@ export default function UserInfo({ user }) {
       })
       .then((response) => {
         setProblemsSolved(response.data.submission_list);
-        console.log(response.data.submission_list);
       })
       .catch((err) => {
         console.error(err);
       });
     setIsLoaded(true);
   }, []);
+
+  let points, ranking
+  if(leaderboard){
+    const userFound = leaderboard?.find((item) => item.user.id === user.id)
+    points = userFound.score
+    ranking = leaderboard.indexOf(userFound) + 1;
+  }
+
+  let userProblemSolved
+  if(problemsSolved){
+    userProblemSolved = problemsSolved?.filter((item) => item.user.id === user.id)
+  }
 
   return (
     <>
@@ -182,7 +190,7 @@ export default function UserInfo({ user }) {
           />
 
           <Container>
-            {problemsSolved && <ChallengeTable problems={problemsSolved} />}
+            {userProblemSolved && <ChallengeTable problems={userProblemSolved} />}
           </Container>
         </div>
       )}

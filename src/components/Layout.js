@@ -7,7 +7,7 @@ import {
   Typography,
   Zoom,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
 import LogoHorizontal from "../images/logoHorizontal/hf10_horz_fcl_rgb.png";
@@ -16,7 +16,6 @@ import Icon from "../images/logomark_icon/hf10_icon_fcd_cmyk.png";
 import BackgroundLaptop from "../images/background/bigScreen.jpg";
 import { useState } from "react";
 import { theme } from "../theme/customTheme";
-import axios from "axios";
 
 export default function Layout() {
   const [showDynamicIsland, setShowDynamicIsland] = useState(false);
