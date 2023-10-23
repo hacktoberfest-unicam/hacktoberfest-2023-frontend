@@ -56,6 +56,10 @@ export default function UserPage() {
         });
     }
     setLoaded(true);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000*60*5); //reload all page every 5 mins
   }, []);
 
   return (

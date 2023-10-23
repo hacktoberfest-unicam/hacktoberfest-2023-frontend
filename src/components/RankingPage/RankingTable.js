@@ -27,7 +27,7 @@ export default function RankingTable() {
                 setLeaderboardData(response.data)
             })
             .catch((error) => {
-                console.error("Zio pera")
+                console.error(error)
             });
     }, []);
 

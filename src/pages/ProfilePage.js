@@ -24,6 +24,9 @@ export default function ProfilePage() {
       .catch((error) => {
         console.error("Zio pera");
       });
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000*60*5); //reload all page every 5 mins
   }, []);
 
   const { nickname } = useParams();
