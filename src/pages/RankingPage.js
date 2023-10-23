@@ -16,6 +16,9 @@ export default function RankingPage() {
         setTimeout(() => {
             setLoading(false);
         }, 3000); // Imposta il timer per 3 secondi
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000*60*5); //reload all page every 5 mins
     }, []);
 
     return (

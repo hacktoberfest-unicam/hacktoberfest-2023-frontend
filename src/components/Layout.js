@@ -164,7 +164,6 @@ export default function Layout() {
                         Profile
                       </Typography>
                     </Button>
-  
                   </Box>
                 </Box>
               </Box>

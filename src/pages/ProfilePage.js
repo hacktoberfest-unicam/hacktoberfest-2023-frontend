@@ -24,6 +24,9 @@ export default function ProfilePage() {
       .catch((error) => {
         console.error("Zio pera");
       });
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000*60*5); //reload all page every 5 mins
   }, []);
 
   const { nickname } = useParams();
@@ -33,5 +36,5 @@ export default function ProfilePage() {
     user = users[0].find((user) => user.github_username === nickname);
   }
 
-  return <>{user && <UserInfo user={user} />}</>;
+  return <>{user && <UserInfo user={user} isPrivateProfile={false} />}</>;
 }

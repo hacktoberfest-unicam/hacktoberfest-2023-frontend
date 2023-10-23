@@ -56,6 +56,10 @@ export default function UserPage() {
         });
     }
     setLoaded(true);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000*60*5); //reload all page every 5 mins
   }, []);
 
   return (
@@ -76,7 +80,7 @@ export default function UserPage() {
       {loaded && isAuthenticated && isAdmin && user && (
         <AdminPage user={user} />
       )}
-      {loaded && isAuthenticated && user && !isAdmin && <UserInfo user={user} />}
+      {loaded && isAuthenticated && user && !isAdmin && <UserInfo user={user} isPrivateProfile={true} />}
       {loaded && !isAuthenticated && <Navigate to="/" />}
     </div>
   );

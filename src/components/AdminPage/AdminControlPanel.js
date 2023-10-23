@@ -14,7 +14,7 @@ import ChallengeController from "./ChallengeController";
 
 export default function AdminControlPanel() {
   const [LeaderboardData, setLeaderboardData] = useState([]);
-  const [problemsSolved, setProblemsSolved] = useState();
+  const [problemsSolved, setProblemsSolved] = useState([]);
   const [usersWithProblemsSolved, setUsersWithProblemsSolved] = useState();
 
   useEffect(() => {
@@ -30,14 +30,11 @@ export default function AdminControlPanel() {
       });
 
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/all`, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
+      .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/all`)
       .then((response) => {
         //console.log(response.data.submission_list);
         setProblemsSolved(response.data.submission_list);
+        console.log(response.data.submission_list)
         const users = new Set();
         response.data.submission_list.forEach((problem) => {
           users.add(problem.user.github_username);
@@ -52,22 +49,29 @@ export default function AdminControlPanel() {
   }, [setProblemsSolved]);
 
   const changeBonusPoints = (event, problem) => {
-    const newBonusPoints = event.target?.value 
-    problem.bonus_points = newBonusPoints 
-    axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/submission/${problem.id}`, {"bonus_points": problem.bonus_points}, { headers: { Authorization: localStorage.getItem("token") } })
-    .then((response) => {
-        console.log(response)
-        const problemsSolvedToUpdate = [...problemsSolved]
-        const problemToUpdate = problemsSolvedToUpdate.find(item => item.id === problem.id)
-        problemToUpdate.bonus_points = newBonusPoints
-        setProblemsSolved(problemsSolvedToUpdate)
-    })
-    .catch((err) => console.error(err))
-  }
+    const newBonusPoints = event.target?.value;
+    problem.bonus_points = newBonusPoints;
+    axios
+      .put(
+        `${process.env.REACT_APP_BACKEND_URL}/api/submission/${problem.id}`,
+        { bonus_points: problem.bonus_points },
+        { headers: { Authorization: localStorage.getItem("token") } }
+      )
+      .then((response) => {
+        console.log(response);
+        const problemsSolvedToUpdate = [...problemsSolved];
+        const problemToUpdate = problemsSolvedToUpdate.find(
+          (item) => item.id === problem.id
+        );
+        problemToUpdate.bonus_points = newBonusPoints;
+        setProblemsSolved(problemsSolvedToUpdate);
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <>
-      <ChallengeController />
+      <ChallengeController addProblemsSolved={setProblemsSolved} allProblemsSolved={problemsSolved} />
       <Typography variant="h1" color="secondary.light">
         Users
       </Typography>
@@ -104,7 +108,13 @@ export default function AdminControlPanel() {
                             <InputLabel id="bonus-points">
                               {problem.bonus_points}
                             </InputLabel>
-                            <Select value={problem.bonus_points} label="bonus points" onChange={(event) => changeBonusPoints(event, problem)}>
+                            <Select
+                              value={problem.bonus_points}
+                              label="bonus points"
+                              onChange={(event) =>
+                                changeBonusPoints(event, problem)
+                              }
+                            >
                               <MenuItem value={-5}>-5</MenuItem>
                               <MenuItem value={-4}>-4</MenuItem>
                               <MenuItem value={-3}>-3</MenuItem>
