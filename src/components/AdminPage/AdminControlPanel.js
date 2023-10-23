@@ -1,6 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {Card, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography,} from "@mui/material";
+import {
+  Card,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  Typography,
+} from "@mui/material";
 import ChallengeController from "./ChallengeController";
 
 export default function AdminControlPanel() {
@@ -21,7 +30,7 @@ export default function AdminControlPanel() {
       });
 
     axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/all`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/all`)
       .then((response) => {
         //console.log(response.data.submission_list);
         setProblemsSolved(response.data.submission_list);
@@ -39,18 +48,25 @@ export default function AdminControlPanel() {
   }, [setProblemsSolved]);
 
   const changeBonusPoints = (event, problem) => {
-    const newBonusPoints = event.target?.value
-    problem.bonus_points = newBonusPoints
-    axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/submission/${problem.id}`, {"bonus_points": problem.bonus_points}, { headers: { Authorization: localStorage.getItem("token") } })
-    .then((response) => {
-        console.log(response)
-        const problemsSolvedToUpdate = [...problemsSolved]
-        const problemToUpdate = problemsSolvedToUpdate.find(item => item.id === problem.id)
-        problemToUpdate.bonus_points = newBonusPoints
-        setProblemsSolved(problemsSolvedToUpdate)
-    })
-    .catch((err) => console.error(err))
-  }
+    const newBonusPoints = event.target?.value;
+    problem.bonus_points = newBonusPoints;
+    axios
+      .put(
+        `${process.env.REACT_APP_BACKEND_URL}/api/submission/${problem.id}`,
+        { bonus_points: problem.bonus_points },
+        { headers: { Authorization: localStorage.getItem("token") } }
+      )
+      .then((response) => {
+        console.log(response);
+        const problemsSolvedToUpdate = [...problemsSolved];
+        const problemToUpdate = problemsSolvedToUpdate.find(
+          (item) => item.id === problem.id
+        );
+        problemToUpdate.bonus_points = newBonusPoints;
+        setProblemsSolved(problemsSolvedToUpdate);
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <>
@@ -91,7 +107,13 @@ export default function AdminControlPanel() {
                             <InputLabel id="bonus-points">
                               {problem.bonus_points}
                             </InputLabel>
-                            <Select value={problem.bonus_points} label="bonus points" onChange={(event) => changeBonusPoints(event, problem)}>
+                            <Select
+                              value={problem.bonus_points}
+                              label="bonus points"
+                              onChange={(event) =>
+                                changeBonusPoints(event, problem)
+                              }
+                            >
                               <MenuItem value={-5}>-5</MenuItem>
                               <MenuItem value={-4}>-4</MenuItem>
                               <MenuItem value={-3}>-3</MenuItem>
