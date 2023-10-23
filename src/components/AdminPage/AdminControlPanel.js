@@ -1,15 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {
-  Card,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  Typography,
-} from "@mui/material";
+import {Card, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography,} from "@mui/material";
 import ChallengeController from "./ChallengeController";
 
 export default function AdminControlPanel() {
@@ -30,11 +21,7 @@ export default function AdminControlPanel() {
       });
 
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/all`, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
+        .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/all`)
       .then((response) => {
         //console.log(response.data.submission_list);
         setProblemsSolved(response.data.submission_list);

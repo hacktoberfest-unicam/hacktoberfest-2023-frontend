@@ -1,11 +1,11 @@
-import { Box, Typography, Container, Grid, Avatar } from "@mui/material";
+import {Avatar, Box, Container, Grid, Typography} from "@mui/material";
 import TypewriterEffect from "react-typewriter-effect";
 import ChallengeTable from "./ChallengeTable";
 import cornicetta from "../../images/background/cornice.svg";
 
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
-import { theme } from "../../theme/customTheme";
+import {theme} from "../../theme/customTheme";
 import SVG from "./SVG";
 
 export default function UserInfo({ user }) {
@@ -32,12 +32,7 @@ export default function UserInfo({ user }) {
       .catch((err) => console.error(err));
     // user.github_username
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/all`, {
-        headers: {
-          Username: `${user?.github_username}`,
-          // Authorization: localStorage.getItem("token"),
-        },
-      })
+        .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/${user?.github_username}`)
       .then((response) => {
         setProblemsSolved(response.data.submission_list);
       })
