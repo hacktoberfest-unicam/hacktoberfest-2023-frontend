@@ -34,6 +34,7 @@ export default function UserInfo({ user }) {
     axios
         .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/${user?.github_username}`)
       .then((response) => {
+        console.log(response.data)
         setProblemsSolved(response.data.submission_list);
       })
       .catch((err) => {
