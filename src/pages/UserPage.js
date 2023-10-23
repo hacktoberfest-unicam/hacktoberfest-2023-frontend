@@ -80,7 +80,7 @@ export default function UserPage() {
       {loaded && isAuthenticated && isAdmin && user && (
         <AdminPage user={user} />
       )}
-      {loaded && isAuthenticated && user && !isAdmin && <UserInfo user={user} />}
+      {loaded && isAuthenticated && user && !isAdmin && <UserInfo user={user} isPrivateProfile={true} />}
       {loaded && !isAuthenticated && <Navigate to="/" />}
     </div>
   );

@@ -14,7 +14,7 @@ import ChallengeController from "./ChallengeController";
 
 export default function AdminControlPanel() {
   const [LeaderboardData, setLeaderboardData] = useState([]);
-  const [problemsSolved, setProblemsSolved] = useState();
+  const [problemsSolved, setProblemsSolved] = useState([]);
   const [usersWithProblemsSolved, setUsersWithProblemsSolved] = useState();
 
   useEffect(() => {
@@ -34,6 +34,7 @@ export default function AdminControlPanel() {
       .then((response) => {
         //console.log(response.data.submission_list);
         setProblemsSolved(response.data.submission_list);
+        console.log(response.data.submission_list)
         const users = new Set();
         response.data.submission_list.forEach((problem) => {
           users.add(problem.user.github_username);
@@ -70,7 +71,7 @@ export default function AdminControlPanel() {
 
   return (
     <>
-      <ChallengeController />
+      <ChallengeController addProblemsSolved={setProblemsSolved} allProblemsSolved={problemsSolved} />
       <Typography variant="h1" color="secondary.light">
         Users
       </Typography>

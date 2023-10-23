@@ -1,14 +1,14 @@
-import {Avatar, Box, Container, Grid, Typography} from "@mui/material";
+import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import TypewriterEffect from "react-typewriter-effect";
 import ChallengeTable from "./ChallengeTable";
 import cornicetta from "../../images/background/cornice.svg";
 
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {theme} from "../../theme/customTheme";
+import { theme } from "../../theme/customTheme";
 import SVG from "./SVG";
 
-export default function UserInfo({ user }) {
+export default function UserInfo({ user, isPrivateProfile }) {
   const [leaderboard, setLeaderboard] = useState();
   //const [ranking, setRanking] = useState();
   //const [points, setPoints] = useState();
@@ -32,9 +32,11 @@ export default function UserInfo({ user }) {
       .catch((err) => console.error(err));
     // user.github_username
     axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}api/submission/${user?.github_username}`)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}api/submission/${user?.github_username}`
+      )
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
         setProblemsSolved(response.data.submission_list);
       })
       .catch((err) => {
@@ -117,18 +119,33 @@ export default function UserInfo({ user }) {
                 </Box>
                 <Box alignContent={"center"} paddingTop={4}>
                   <Box height={60}>
-                    <TypewriterEffect
-                      textStyle={{
-                        fontWeight: 500,
-                        fontSize: 45,
-                        color: "#efedef",
-                      }}
-                      startDelay={1500}
-                      text={"hello"}
-                      // multiTextDelay={1000}
-                      typeSpeed={100}
-                      hideCursorAfterText={true}
-                    />
+                    {isPrivateProfile ? (
+                      <TypewriterEffect
+                        textStyle={{
+                          fontWeight: 500,
+                          fontSize: 45,
+                          color: "#efedef",
+                        }}
+                        startDelay={1500}
+                        text={"hello"}
+                        // multiTextDelay={1000}
+                        typeSpeed={100}
+                        hideCursorAfterText={true}
+                      />
+                    ) : (
+                      <TypewriterEffect
+                        textStyle={{
+                          fontWeight: 500,
+                          fontSize: 45,
+                          color: "#efedef",
+                        }}
+                        startDelay={1500}
+                        text={"scouting"}
+                        // multiTextDelay={1000}
+                        typeSpeed={100}
+                        hideCursorAfterText={true}
+                      />
+                    )}
                   </Box>
                   <TypewriterEffect
                     textStyle={{

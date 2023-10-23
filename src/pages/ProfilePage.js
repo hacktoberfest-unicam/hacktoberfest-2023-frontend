@@ -36,5 +36,5 @@ export default function ProfilePage() {
     user = users[0].find((user) => user.github_username === nickname);
   }
 
-  return <>{user && <UserInfo user={user} />}</>;
+  return <>{user && <UserInfo user={user} isPrivateProfile={false} />}</>;
 }
